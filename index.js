@@ -46,7 +46,9 @@ function ngConstantPlugin(opts) {
 
     try {
       var data = file.isNull() ? {} : yaml.safeLoad(file.contents);
-
+      
+      data = options.namespace ? data[options.namespace] : data;
+      
       // Create the module string
       var result = _.template(template)({
         moduleName: getModuleName(data, options, file),
