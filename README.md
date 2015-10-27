@@ -225,33 +225,6 @@ Location of a custom template file for creating the output configuration file. D
 
 ## Examples
 
-### Multiple Environments
-
-_**config.json**_
-```json
-{
-  "development": { "greeting": "Sup!" },
-  "production": { "greeting": "Hello" }
-}
-```
-
-_**gulpfile.js**_
-```javascript
-var gulp = require('gulp');
-var ngConstant = require('gulp-ng-constant');
-
-gulp.task('constants', function () {
-  var myConfig = require('./config.json');
-  var envConfig = myConfig[process.env];
-  return ngConstant({
-      constants: envConfig,
-      stream: true
-    })
-    .pipe(gulp.dest('dist'));
-});
-
-```
-
 ### Stream
 
 ```javascript
